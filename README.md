@@ -1,6 +1,6 @@
-# 🚤 Gestor de pateras
+# 🚤 BASE DE DATOS PATERAS
 
-Aplicación web para cargar las **tablas de combinar** de cada patera, buscar cualquier dato (NIE, nombre, diligencias…), marcar **triaje**, **protección / decreto**, **desistimientos**, **citaciones de notificación de acuerdo** y **letrado**, y guardar por patera un **mensaje inicial**, un **mensaje final** y unas **observaciones**. Funciona en el ordenador y en el móvil, se instala como una app y **no necesita servidor**: todos los datos se guardan en el propio dispositivo.
+Aplicación web para cargar las **tablas de combinar** de cada patera, buscar cualquier dato (NIE, nombre, diligencias…), marcar **triaje**, **protección / decreto**, **desistimientos**, **citaciones de notificación de acuerdo** y **letrado**, y guardar por patera un **mensaje inicial**, un **mensaje final** y unas **observaciones**. Funciona en el ordenador y en el móvil, se instala como una app y **no necesita servidor**. Los datos se guardan en el propio dispositivo o, si lo conectas, en un archivo de la **carpeta compartida** para que varios ordenadores vean los mismos datos.
 
 > **Archivo de la app:** `index.html` (un único archivo).
 
@@ -16,10 +16,11 @@ Aplicación web para cargar las **tablas de combinar** de cada patera, buscar cu
 6. [Mensaje inicial, mensaje final y observaciones](#6-mensaje-inicial-mensaje-final-y-observaciones)
 7. [Cambiar varias pateras de golpe](#7-cambiar-varias-pateras-de-golpe)
 8. [Borrar pateras](#8-borrar-pateras)
-9. [Exportar e importar la base de datos](#9-exportar-e-importar-la-base-de-datos)
-10. [Copias de seguridad](#10-copias-de-seguridad)
-11. [Problemas frecuentes](#11-problemas-frecuentes)
-12. [Publicar la app en GitHub Pages](#12-publicar-la-app-en-github-pages)
+9. [Varios ordenadores: base de datos en la carpeta compartida](#9-varios-ordenadores-base-de-datos-en-la-carpeta-compartida)
+10. [Exportar e importar la base de datos](#10-exportar-e-importar-la-base-de-datos)
+11. [Copias de seguridad](#11-copias-de-seguridad)
+12. [Problemas frecuentes](#12-problemas-frecuentes)
+13. [Publicar la app en GitHub Pages](#13-publicar-la-app-en-github-pages)
 
 ---
 
@@ -45,7 +46,7 @@ Así tendrás un icono junto a tus demás apps, sin abrir el navegador cada vez.
 | 3️⃣ | Elige **"Añadir a pantalla de inicio"**. |
 | 4️⃣ | Pulsa **Añadir**. |
 
-> ⚠️ Los datos se guardan **en cada dispositivo por separado**: lo que hagas en el móvil no aparece solo en el ordenador. Para pasar los datos de uno a otro usa **Exportar / importar** (sección 9). Si borras los datos del navegador, también se borran: exporta la base de datos de vez en cuando.
+> ⚠️ Los datos se guardan **en cada dispositivo por separado**: lo que hagas en el móvil no aparece solo en el ordenador. Para pasar los datos de uno a otro usa **Exportar / importar** (sección 10). En los ordenadores de la oficina puedes usar la **carpeta compartida** (sección 9). Si borras los datos del navegador, también se borran: exporta la base de datos de vez en cuando.
 
 ---
 
@@ -145,7 +146,35 @@ Hay dos formas:
 
 ---
 
-## 9. Exportar e importar la base de datos
+## 9. Varios ordenadores: base de datos en la carpeta compartida
+
+Si abres la app (el `index.html`) en dos ordenadores, **cada uno guarda sus datos en su propio navegador** y no ve lo que se hizo en el otro. Para que todos trabajen con **los mismos datos**, conecta la app a un archivo de base de datos guardado en la carpeta compartida: **`pateras_datos.json`**.
+
+### Ponerlo en marcha (solo la primera vez)
+
+| Dónde | Qué hacer |
+|---|---|
+| **Primer ordenador** (el que ya tiene los datos) | ☰ → **Carpeta compartida** → **➕ Crear la base de datos en la carpeta compartida**. Elige la carpeta compartida (por ejemplo, la misma del `index.html`), deja el nombre `pateras_datos.json` y pulsa **Guardar**. Acepta el permiso para editar el archivo. |
+| **Cada uno de los demás ordenadores** | ☰ → **Carpeta compartida** → **📂 Abrir la base de datos de la carpeta compartida**. Elige `pateras_datos.json` y acepta el permiso. Si ese ordenador ya tenía datos, la app pregunta si usar solo los del archivo o **añadirle lo de este ordenador** (solo datos nuevos). |
+
+### Día a día
+
+1. Al abrir la app, aparece **Conectar**: púlsalo y acepta el permiso (el navegador lo pide cada vez que se abre, por seguridad).
+2. Arriba se ve el estado: **📁 Conectado a la base de datos compartida pateras_datos.json**.
+3. Cada cambio se guarda en el archivo compartido. Antes de guardar, la app trae lo último que hayan hecho los demás, así que **no se pisan los cambios** aunque dos personas trabajen a la vez.
+4. Cada pocos segundos la app comprueba si otro ordenador ha cambiado algo y se actualiza sola (aviso *Datos actualizados desde la carpeta compartida*).
+
+> 💻 Funciona en **Chrome** y **Edge** de ordenador. En el móvil, Firefox o Safari no está disponible: usa **Exportar / importar** (sección 10).
+>
+> ⚠️ Si la carpeta compartida no está disponible (red caída), la app avisa y **no guarda el cambio**. Pulsa **Reintentar** cuando vuelva la red.
+>
+> 🔌 **Desconectar** (en ☰ → Carpeta compartida) deja de usar el archivo; el ordenador se queda con una copia de los datos y el archivo no se borra.
+>
+> 🛡 Las copias de seguridad automáticas se guardan en cada ordenador. Exporta la base de datos de vez en cuando para tener otra copia.
+
+---
+
+## 10. Exportar e importar la base de datos
 
 Abre **☰ → Exportar / importar base de datos**.
 
@@ -172,7 +201,7 @@ Abre **☰ → Exportar / importar base de datos**.
 
 ---
 
-## 10. Copias de seguridad
+## 11. Copias de seguridad
 
 La app guarda **copias automáticas** dentro del navegador: al abrirla (cada pocas horas), antes de cargar tablas, de eliminar una patera, de un cambio en bloque, de importar o de restaurar, y cada rato mientras editas. Se guardan las **30 últimas**.
 
@@ -180,15 +209,18 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 2. **＋ Crear copia ahora** para hacer una en el momento.
 3. **Restaurar** vuelve a los datos de esa copia (antes se guarda una copia de lo actual, por si te arrepientes).
 
-> ⚠️ Estas copias están **en el mismo navegador**. Si se borran los datos del navegador, se pierden también. Para una copia segura, **exporta la base de datos** (sección 9).
+> ⚠️ Estas copias están **en el mismo navegador**. Si se borran los datos del navegador, se pierden también. Para una copia segura, **exporta la base de datos** (sección 10).
 
 ---
 
-## 11. Problemas frecuentes
+## 12. Problemas frecuentes
 
 | Problema | Solución |
 |---|---|
+| En otro ordenador no salen los datos | Cada navegador guarda sus datos. Conecta todos los ordenadores a la **carpeta compartida** (sección 9). |
 | En el móvil no veo lo que hice en el ordenador | Es normal: cada dispositivo guarda sus datos. Exporta en uno e importa (solo datos nuevos) en el otro. |
+| Sale *Conectar* al abrir la app | Es normal: el navegador pide permiso cada vez para usar el archivo compartido. Pulsa **Conectar** y acepta. |
+| *No se puede leer la base de datos compartida* | La carpeta compartida no está disponible (red, servidor apagado o el archivo se ha movido). Pulsa **Reintentar**; si se movió, vuelve a abrirlo desde ☰ → Carpeta compartida. |
 | No lee un `.xls` | Necesita internet la primera vez. O guarda la tabla como `.xlsx` u `.ods`. |
 | No lee el `pateras.db` antiguo | Necesita internet para cargar el lector de bases de datos. |
 | Una tabla sale sin año | La tabla no tiene una columna de **fecha de detención** reconocible. Revisa el título de esa columna. |
@@ -197,7 +229,7 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 
 ---
 
-## 12. Publicar la app en GitHub Pages
+## 13. Publicar la app en GitHub Pages
 
 1. En [github.com](https://github.com) crea un **repositorio nuevo** (por ejemplo `gestor-pateras`), público.
 2. Sube a la raíz del repositorio el archivo **`index.html`** (opción *Add file → Upload files*). Puedes subir también este `README.md`.
@@ -217,6 +249,6 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 ## 🧱 Notas técnicas
 
 - App de un solo archivo HTML, sin servidor.
-- Datos guardados localmente en el navegador (IndexedDB).
+- Datos guardados localmente en el navegador (IndexedDB) y, opcionalmente, en un archivo `pateras_datos.json` de una carpeta compartida (File System Access API de Chrome/Edge).
 - Lee `.xlsx`, `.ods` y `.csv` sin librerías externas. Los `.xls` usan [SheetJS](https://sheetjs.com/) y el `pateras.db` antiguo usa [sql.js](https://sql.js.org/), cargados desde internet solo cuando hacen falta.
 - Reconoce a las mismas personas que el programa antiguo, así que importar su base de datos y seguir cargando tablas no duplica a nadie.
