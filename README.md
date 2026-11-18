@@ -15,10 +15,11 @@ Aplicación web para cargar las **tablas de combinar** de cada patera, buscar cu
 5. [Personas: triaje, protección, desistimiento, citación y letrado](#5-personas-triaje-protección-desistimiento-citación-y-letrado)
 6. [Mensaje inicial, mensaje final y observaciones](#6-mensaje-inicial-mensaje-final-y-observaciones)
 7. [Cambiar varias pateras de golpe](#7-cambiar-varias-pateras-de-golpe)
-8. [Exportar e importar la base de datos](#8-exportar-e-importar-la-base-de-datos)
-9. [Copias de seguridad](#9-copias-de-seguridad)
-10. [Problemas frecuentes](#10-problemas-frecuentes)
-11. [Publicar la app en GitHub Pages](#11-publicar-la-app-en-github-pages)
+8. [Borrar pateras](#8-borrar-pateras)
+9. [Exportar e importar la base de datos](#9-exportar-e-importar-la-base-de-datos)
+10. [Copias de seguridad](#10-copias-de-seguridad)
+11. [Problemas frecuentes](#11-problemas-frecuentes)
+12. [Publicar la app en GitHub Pages](#12-publicar-la-app-en-github-pages)
 
 ---
 
@@ -44,7 +45,7 @@ Así tendrás un icono junto a tus demás apps, sin abrir el navegador cada vez.
 | 3️⃣ | Elige **"Añadir a pantalla de inicio"**. |
 | 4️⃣ | Pulsa **Añadir**. |
 
-> ⚠️ Los datos se guardan **en cada dispositivo por separado**: lo que hagas en el móvil no aparece solo en el ordenador. Para pasar los datos de uno a otro usa **Exportar / importar** (sección 8). Si borras los datos del navegador, también se borran: exporta la base de datos de vez en cuando.
+> ⚠️ Los datos se guardan **en cada dispositivo por separado**: lo que hagas en el móvil no aparece solo en el ordenador. Para pasar los datos de uno a otro usa **Exportar / importar** (sección 9). Si borras los datos del navegador, también se borran: exporta la base de datos de vez en cuando.
 
 ---
 
@@ -52,7 +53,7 @@ Así tendrás un icono junto a tus demás apps, sin abrir el navegador cada vez.
 
 | Zona | Para qué sirve |
 |---|---|
-| ☰ (arriba a la izquierda) | Menú: Pateras y personas, Cargar tablas, Exportar / importar, Copias de seguridad, Guía y Manual. |
+| ☰ (arriba a la izquierda) | Menú: Pateras y personas, Cargar tablas, Exportar / importar, Borrar pateras, Copias de seguridad, Guía y Manual. |
 | 🟨 **GUÍA DE USO** | Abre la guía rápida en PDF. |
 | **Cargar tablas de combinar** | Elige (o arrastra, en el ordenador) las tablas .ods, .xlsx, .xls o .csv. |
 | Resumen | Totales del año elegido: pateras, personas, triajes, protecciones, decretos, desistimientos y citaciones. |
@@ -128,7 +129,23 @@ Cada tarjeta de patera tiene tres botones: **Mensaje inicial**, **Mensaje final*
 
 ---
 
-## 8. Exportar e importar la base de datos
+## 8. Borrar pateras
+
+Hay dos formas:
+
+- **Una sola:** la papelera 🗑 de su tarjeta (solo se ven las pateras del año elegido).
+- **Varias a la vez, de cualquier año:** ☰ → **Borrar pateras**.
+
+1. En la lista salen **todas las pateras**, con su año, número de personas y mensajes. Puedes filtrar por número o año.
+2. **Marca** las que quieras borrar (o **Marcar todas**).
+3. Si quieres, activa **Borrar también sus mensajes**. Si no, los mensajes se conservan y vuelven a aparecer si cargas esa patera otra vez.
+4. Pulsa **Borrar seleccionadas**. El botón cambia a *"Pulsa otra vez para confirmar el borrado"*: púlsalo otra vez.
+
+> 🛡 Antes de borrar se guarda una **copia de seguridad**. Si te equivocas: ☰ → **Copias de seguridad** → **Restaurar**.
+
+---
+
+## 9. Exportar e importar la base de datos
 
 Abre **☰ → Exportar / importar base de datos**.
 
@@ -155,7 +172,7 @@ Abre **☰ → Exportar / importar base de datos**.
 
 ---
 
-## 9. Copias de seguridad
+## 10. Copias de seguridad
 
 La app guarda **copias automáticas** dentro del navegador: al abrirla (cada pocas horas), antes de cargar tablas, de eliminar una patera, de un cambio en bloque, de importar o de restaurar, y cada rato mientras editas. Se guardan las **30 últimas**.
 
@@ -163,11 +180,11 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 2. **＋ Crear copia ahora** para hacer una en el momento.
 3. **Restaurar** vuelve a los datos de esa copia (antes se guarda una copia de lo actual, por si te arrepientes).
 
-> ⚠️ Estas copias están **en el mismo navegador**. Si se borran los datos del navegador, se pierden también. Para una copia segura, **exporta la base de datos** (sección 8).
+> ⚠️ Estas copias están **en el mismo navegador**. Si se borran los datos del navegador, se pierden también. Para una copia segura, **exporta la base de datos** (sección 9).
 
 ---
 
-## 10. Problemas frecuentes
+## 11. Problemas frecuentes
 
 | Problema | Solución |
 |---|---|
@@ -180,7 +197,7 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 
 ---
 
-## 11. Publicar la app en GitHub Pages
+## 12. Publicar la app en GitHub Pages
 
 1. En [github.com](https://github.com) crea un **repositorio nuevo** (por ejemplo `gestor-pateras`), público.
 2. Sube a la raíz del repositorio el archivo **`index.html`** (opción *Add file → Upload files*). Puedes subir también este `README.md`.
