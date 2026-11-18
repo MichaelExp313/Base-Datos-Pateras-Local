@@ -155,16 +155,18 @@ Si abres la app (el `index.html`) en dos ordenadores, **cada uno guarda sus dato
 | Dónde | Qué hacer |
 |---|---|
 | **Primer ordenador** (el que ya tiene los datos) | ☰ → **Carpeta compartida** → **➕ Crear la base de datos en la carpeta compartida**. Elige la carpeta compartida (por ejemplo, la misma del `index.html`), deja el nombre `pateras_datos.json` y pulsa **Guardar**. Acepta el permiso para editar el archivo. |
-| **Cada uno de los demás ordenadores** | ☰ → **Carpeta compartida** → **📂 Abrir la base de datos de la carpeta compartida**. Elige `pateras_datos.json` y acepta el permiso. Si ese ordenador ya tenía datos, la app pregunta si usar solo los del archivo o **añadirle lo de este ordenador** (solo datos nuevos). |
+| **Cada uno de los demás ordenadores** | ☰ → **Carpeta compartida** → **📂 Abrir la base de datos de la carpeta compartida**. Al pulsarlo se copia la ruta `\\10.45.17.73\CarpetaCompartida\00 PROGRAMAS EXTRANJERÍA\BASE DE DATOS\pateras_datos.json`: en la ventana que se abre, pega con **Ctrl+V** en «Nombre:» y pulsa **Abrir**. Después pulsa **✔ Permitir** y, si el navegador pregunta, elige **«Permitir en cada visita»**. Si ese ordenador ya tenía datos, la app pregunta si usar solo los del archivo o **añadirle lo de este ordenador** (solo datos nuevos). |
 
 ### Día a día
 
-1. Al abrir la app, aparece **Conectar**: púlsalo y acepta el permiso (el navegador lo pide cada vez que se abre, por seguridad).
+1. La app **recuerda el archivo y se conecta sola** al abrirla. Si elegiste «Permitir en cada visita», no pide nada. Si no, aparece **Conectar** (o basta con hacer clic en cualquier parte de la página) y se acepta el permiso.
 2. Arriba se ve el estado: **📁 Conectado a la base de datos compartida pateras_datos.json**.
 3. Cada cambio se guarda en el archivo compartido. Antes de guardar, la app trae lo último que hayan hecho los demás, así que **no se pisan los cambios** aunque dos personas trabajen a la vez.
 4. Cada pocos segundos la app comprueba si otro ordenador ha cambiado algo y se actualiza sola (aviso *Datos actualizados desde la carpeta compartida*).
 
-> 💻 Funciona en **Chrome** y **Edge** de ordenador. En el móvil, Firefox o Safari no está disponible: usa **Exportar / importar** (sección 10).
+> 🔐 Por seguridad, el navegador no deja que una página abra sola un archivo a partir de su ruta: hay que elegirlo **una vez** en cada ordenador. Después la app lo recuerda.
+>
+> 💻 Funciona en **Edge** y **Chrome** de ordenador. En el móvil, Firefox o Safari no está disponible: usa **Exportar / importar** (sección 10).
 >
 > ⚠️ Si la carpeta compartida no está disponible (red caída), la app avisa y **no guarda el cambio**. Pulsa **Reintentar** cuando vuelva la red.
 >
@@ -219,7 +221,8 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 |---|---|
 | En otro ordenador no salen los datos | Cada navegador guarda sus datos. Conecta todos los ordenadores a la **carpeta compartida** (sección 9). |
 | En el móvil no veo lo que hice en el ordenador | Es normal: cada dispositivo guarda sus datos. Exporta en uno e importa (solo datos nuevos) en el otro. |
-| Sale *Conectar* al abrir la app | Es normal: el navegador pide permiso cada vez para usar el archivo compartido. Pulsa **Conectar** y acepta. |
+| Sale *Conectar* al abrir la app | Pulsa **Conectar** y, en el aviso del navegador, elige **«Permitir en cada visita»**: así la próxima vez se conecta sola. |
+| *Not allowed to request permissions in this context* | Era un fallo de versiones anteriores. Usa el `index.html` nuevo; ahora sale un botón **✔ Permitir**. |
 | *No se puede leer la base de datos compartida* | La carpeta compartida no está disponible (red, servidor apagado o el archivo se ha movido). Pulsa **Reintentar**; si se movió, vuelve a abrirlo desde ☰ → Carpeta compartida. |
 | No lee un `.xls` | Necesita internet la primera vez. O guarda la tabla como `.xlsx` u `.ods`. |
 | No lee el `pateras.db` antiguo | Necesita internet para cargar el lector de bases de datos. |
