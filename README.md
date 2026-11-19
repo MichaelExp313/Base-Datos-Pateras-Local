@@ -148,29 +148,32 @@ Hay dos formas:
 
 ## 9. Varios ordenadores: base de datos en la carpeta compartida
 
-Si abres la app (el `index.html`) en dos ordenadores, **cada uno guarda sus datos en su propio navegador** y no ve lo que se hizo en el otro. Para que todos trabajen con **los mismos datos**, conecta la app a un archivo de base de datos guardado en la carpeta compartida: **`pateras_datos.json`**.
+Si abres la app en dos ordenadores, **cada uno guarda sus datos en su propio navegador**. Para que todos trabajen con **los mismos datos**, la app usa un archivo de base de datos en la carpeta compartida: **`BASE DE DATOS\pateras_datos.js`**, en la misma carpeta donde está el HTML.
 
-### Ponerlo en marcha (solo la primera vez)
+> Abre siempre la app desde la carpeta compartida: `\\10.45.17.73\CarpetaCompartida\00 PROGRAMAS EXTRANJERÍA\00. BASE DE DATOS.html`.
 
-| Dónde | Qué hacer |
-|---|---|
-| **Primer ordenador** (el que ya tiene los datos) | ☰ → **Carpeta compartida** → **➕ Crear la base de datos en la carpeta compartida**. Elige la carpeta compartida (por ejemplo, la misma del `index.html`), deja el nombre `pateras_datos.json` y pulsa **Guardar**. Acepta el permiso para editar el archivo. |
-| **Cada uno de los demás ordenadores** | ☰ → **Carpeta compartida** → **📂 Abrir la base de datos de la carpeta compartida**. Al pulsarlo se copia la ruta `\\10.45.17.73\CarpetaCompartida\00 PROGRAMAS EXTRANJERÍA\BASE DE DATOS\pateras_datos.json`: en la ventana que se abre, pega con **Ctrl+V** en «Nombre:» y pulsa **Abrir**. Después pulsa **✔ Permitir** y, si el navegador pregunta, elige **«Permitir en cada visita»**. Si ese ordenador ya tenía datos, la app pregunta si usar solo los del archivo o **añadirle lo de este ordenador** (solo datos nuevos). |
+### Ponerlo en marcha (una vez en cada ordenador)
+
+1. ☰ → **Carpeta compartida** → **📁 Usar la base de datos de la carpeta compartida**.
+2. **Si todavía no existe** (solo el primer ordenador, el que tiene los datos): pulsa **➕ Crear la base de datos compartida**. Se abre la ventana «Guardar como»: si no está ya en la carpeta `BASE DE DATOS`, pega con **Ctrl+V** en «Nombre:» (la ruta completa ya está copiada) y pulsa **Guardar**.
+3. **Si ya existe**: la app la lee directamente, sin ventanas. Si ese ordenador tiene datos que no están en ella, pregunta si **añadirlos** (recomendado).
 
 ### Día a día
 
-1. La app **recuerda el archivo y se conecta sola** al abrirla. Si elegiste «Permitir en cada visita», no pide nada. Si no, aparece **Conectar** (o basta con hacer clic en cualquier parte de la página) y se acepta el permiso.
-2. Arriba se ve el estado: **📁 Conectado a la base de datos compartida pateras_datos.json**.
-3. Cada cambio se guarda en el archivo compartido. Antes de guardar, la app trae lo último que hayan hecho los demás, así que **no se pisan los cambios** aunque dos personas trabajen a la vez.
-4. Cada pocos segundos la app comprueba si otro ordenador ha cambiado algo y se actualiza sola (aviso *Datos actualizados desde la carpeta compartida*).
+| Qué | Cómo |
+|---|---|
+| **Ver los datos** | Automático: al abrir la app se lee la base de datos compartida y se actualiza sola cada pocos segundos con lo que hagan los demás. |
+| **Guardar cambios** | Una vez cada vez que abras la app: pulsa **💾 Activar guardado** (arriba, o sale solo al hacer el primer cambio) → en la ventana «Guardar como» pulsa **Guardar** → **Sí** para reemplazar. A partir de ahí, todo se guarda solo hasta que cierres la app. |
 
-> 🔐 Por seguridad, el navegador no deja que una página abra sola un archivo a partir de su ruta: hay que elegirlo **una vez** en cada ordenador. Después la app lo recuerda.
+- Arriba se ve el estado: naranja **«Viendo la base de datos compartida… Activar guardado»** o verde **«Conectado… guardado activado»**.
+- Antes de guardar, la app trae lo último que hayan hecho los demás: **no se pisan los cambios** aunque dos personas trabajen a la vez.
+- Si en la ventana «Guardar» se elige otra carpeta o nombre, la app lo detecta y avisa: hay que guardarlo exactamente en `BASE DE DATOS\pateras_datos.js`.
+
+> 🔐 Por seguridad, Edge no deja que una página guarde en una carpeta de red sin que la persona lo confirme en la ventana «Guardar», y no recuerda ese permiso al cerrar la app. Por eso hace falta **Activar guardado** una vez por sesión.
 >
-> 💻 Funciona en **Edge** y **Chrome** de ordenador. En el móvil, Firefox o Safari no está disponible: usa **Exportar / importar** (sección 10).
+> 📄 El archivo antiguo `pateras_datos.json` ya no se usa. Si tiene datos que no estén en ningún ordenador, impórtalo con **Exportar / importar → Importar solo datos nuevos**.
 >
-> ⚠️ Si la carpeta compartida no está disponible (red caída), la app avisa y **no guarda el cambio**. Pulsa **Reintentar** cuando vuelva la red.
->
-> 🔌 **Desconectar** (en ☰ → Carpeta compartida) deja de usar el archivo; el ordenador se queda con una copia de los datos y el archivo no se borra.
+> 🔌 **Desconectar** (☰ → Carpeta compartida) deja de usar la base de datos compartida; el ordenador se queda con una copia y el archivo no se borra.
 >
 > 🛡 Las copias de seguridad automáticas se guardan en cada ordenador. Exporta la base de datos de vez en cuando para tener otra copia.
 
@@ -221,9 +224,10 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 |---|---|
 | En otro ordenador no salen los datos | Cada navegador guarda sus datos. Conecta todos los ordenadores a la **carpeta compartida** (sección 9). |
 | En el móvil no veo lo que hice en el ordenador | Es normal: cada dispositivo guarda sus datos. Exporta en uno e importa (solo datos nuevos) en el otro. |
-| Sale *Conectar* al abrir la app | Pulsa **Conectar** y, en el aviso del navegador, elige **«Permitir en cada visita»**: así la próxima vez se conecta sola. |
-| *Not allowed to request permissions in this context* | Era un fallo de versiones anteriores. Usa el `index.html` nuevo; ahora sale un botón **✔ Permitir**. |
-| *No se puede leer la base de datos compartida* | La carpeta compartida no está disponible (red, servidor apagado o el archivo se ha movido). Pulsa **Reintentar**; si se movió, vuelve a abrirlo desde ☰ → Carpeta compartida. |
+| Sale *Activar guardado* al abrir la app | Es normal: Edge pide confirmar la ventana «Guardar» una vez por sesión para poder guardar en la red. Ver los datos no necesita nada. |
+| *Not allowed to request permissions…*, *Hace falta permiso…* o *No se puede abrir esta carpeta porque contiene archivos del sistema* | Eran fallos de versiones anteriores con Edge. Usa la **versión 4** (sale abajo, junto a «Manual detallado»). |
+| *Se ha guardado en otro sitio* | En la ventana «Guardar» se eligió otra carpeta. Vuelve a pulsar **Activar guardado** y pega la ruta con **Ctrl+V** en «Nombre:». |
+| *No se puede leer la base de datos compartida* | La carpeta compartida no está disponible (red, servidor apagado o el archivo se ha movido). Pulsa **Reintentar**. |
 | No lee un `.xls` | Necesita internet la primera vez. O guarda la tabla como `.xlsx` u `.ods`. |
 | No lee el `pateras.db` antiguo | Necesita internet para cargar el lector de bases de datos. |
 | Una tabla sale sin año | La tabla no tiene una columna de **fecha de detención** reconocible. Revisa el título de esa columna. |
@@ -235,15 +239,17 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 ## 13. Publicar la app en GitHub Pages
 
 1. En [github.com](https://github.com) crea un **repositorio nuevo** (por ejemplo `gestor-pateras`), público.
-2. Sube a la raíz del repositorio el archivo **`index.html`** (opción *Add file → Upload files*). Puedes subir también este `README.md`.
+2. Sube a la raíz del repositorio los archivos **`index.html`**, **`README.md`**, **`Guia_de_uso_Gestor_de_pateras.pdf`** y **`.gitignore`** (opción *Add file → Upload files*). El `.gitignore` evita que se suban por error archivos con datos.
 3. Ve a **Settings → Pages**.
 4. En *Source* elige **Deploy from a branch**, rama **main** y carpeta **/ (root)**. Pulsa **Save**.
 5. Espera uno o dos minutos. La dirección será normalmente `https://TU-USUARIO.github.io/gestor-pateras/`.
 6. Abre esa dirección en el ordenador o en el móvil y sigue el apartado 1 para instalarla.
 
+> 📁 **Versión web y carpeta compartida.** La base de datos compartida (sección 9) solo funciona abriendo la app **desde la carpeta compartida** (`00. BASE DE DATOS.html`). Desde la dirección de GitHub (por ejemplo, en el móvil), cada dispositivo guarda sus propios datos; para pasarlos usa **Exportar / importar** (sección 10). En la carpeta compartida podéis poner el mismo `index.html` renombrado como `00. BASE DE DATOS.html`.
+>
 > 🔓 Una web de GitHub Pages es pública para quien tenga el enlace, pero **la app no lleva datos**: los datos de cada usuario se guardan solo en su dispositivo.
 >
-> 🚫 **No subas nunca** al repositorio las tablas de combinar, el `pateras.db` ni los `.json` exportados: contienen datos personales.
+> 🚫 **No subas nunca** al repositorio las tablas de combinar, el `pateras.db`, el `pateras_datos.js` de la carpeta compartida ni los `.json` exportados: contienen datos personales.
 >
 > 🔄 Para actualizar la app, sube el nuevo `index.html` sustituyendo el anterior. Los datos guardados no se pierden.
 
@@ -252,6 +258,6 @@ La app guarda **copias automáticas** dentro del navegador: al abrirla (cada poc
 ## 🧱 Notas técnicas
 
 - App de un solo archivo HTML, sin servidor.
-- Datos guardados localmente en el navegador (IndexedDB) y, opcionalmente, en un archivo `pateras_datos.json` de una carpeta compartida (File System Access API de Chrome/Edge).
+- Datos guardados localmente en el navegador (IndexedDB) y, opcionalmente, en `BASE DE DATOS/pateras_datos.js` de la carpeta compartida: se lee como script (sin permisos) y se escribe con la File System Access API (ventana «Guardar»).
 - Lee `.xlsx`, `.ods` y `.csv` sin librerías externas. Los `.xls` usan [SheetJS](https://sheetjs.com/) y el `pateras.db` antiguo usa [sql.js](https://sql.js.org/), cargados desde internet solo cuando hacen falta.
 - Reconoce a las mismas personas que el programa antiguo, así que importar su base de datos y seguir cargando tablas no duplica a nadie.
